@@ -2170,7 +2170,7 @@ void UpdateTopLeftHUD(int client, bool wait)
 	style = (style == -1) ? 0 : style; // central replay bot probably
 	track = (track == -1) ? 0 : track; // central replay bot probably
 
-	if (!(0 <= style < gI_Styles) || !(0 <= track <= TRACKS_SIZE))
+	if (!(0 <= style < gI_Styles) && !(0 <= track <= TRACKS_SIZE))
 	{
 		return;
 	}
@@ -2285,7 +2285,7 @@ void UpdateTopLeftHUD(int client, bool wait)
 
 void UpdateKeyHint(int client)
 {
-	if ((gI_Cycle % 10) != 0)
+	if ((gI_Cycle % 10 != 0) || !IsValidClient(client))
 	{
 		return;
 	}
@@ -2313,7 +2313,7 @@ void UpdateKeyHint(int client)
 	style = (style == -1) ? 0 : style;
 	track = (track == -1) ? 0 : track;
 
-	if (!(0 <= style < gI_Styles) || !(0 <= track <= TRACKS_SIZE))
+	if (!(0 <= style < gI_Styles) && !(0 <= track <= TRACKS_SIZE))
 	{
 		return;
 	}
